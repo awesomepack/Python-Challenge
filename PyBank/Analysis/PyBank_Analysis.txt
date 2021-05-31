@@ -1,6 +1,7 @@
 ==========PyBank Report==========
-The total number of months is 86
-The Total is 38382578
-The average change is -2315.1176470588234
-Greatest Increase: 1926159
-Greatest Decrease: -2196167
+
+The total number of months is: 86
+The Total is: $38382578
+The average change is: $-2315.1176470588234
+Greatest Increase in profits: $1926159
+Greatest Decrease in profits: $-2196167
