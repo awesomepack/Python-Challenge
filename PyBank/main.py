@@ -1,13 +1,9 @@
 ''' 
 PyBank Main Script
 Authored by: Merari Cisneros
-
-* Read Financial data from CSV source
 '''
 #Importing dependencies
 import os , csv
-from typing import NewType
-
 from numpy import average
 
 # Reading the PyBank CSV
@@ -31,11 +27,11 @@ with open(file , 'r') as Fdata:
 
 #Determining Time Span of datasets (Months)
 
-Total_Months = len(Months);
+Total_Months = len(Months); # It is the number of entries in the data set
 
 #Net Total Profit/Loss ($)
 
-Net_Total = sum(PL); # The net total is simply the sum of our profit/loss values in the data set.
+Net_Total = sum(PL); # The net total is the sum of PL values
 
 #Computing average change in PL
 
@@ -59,19 +55,23 @@ Decrease = min(change);
 w_file = os.path.join('PyBank' , 'Analysis' , 'PyBank_Analysis.txt');
 
 Header = '==========PyBank Report==========';
-L1 = f'The total number of months is {Total_Months}';
-L2 = f'The Total is {Net_Total}';
-L3 = f'The average change is {avg_change}';
-L4 = f'Greatest Increase: {Increase}';
-L5 = f'Greatest Decrease: {Decrease}'; 
+L1 = f'The total number of months is: {Total_Months}';
+L2 = f'The Total is: ${Net_Total}';
+L3 = f'The average change is: ${avg_change}';
+L4 = f'Greatest Increase in profits: ${Increase}';
+L5 = f'Greatest Decrease in profits: ${Decrease}'; 
 new_line = '\n';
 
-Report = [Header , new_line , L1 , new_line , L2 , new_line , L3 , new_line , L4 , new_line , L5];
+Report = [Header , 2*new_line , L1 , new_line , L2 , new_line , L3 , new_line , L4 , new_line , L5];
 
 with open(w_file , 'w') as f:
 
     f.writelines(Report);
 
+
+# Printing Results to the terminal
+for i in Report:
+    print(i);
     
 
 
