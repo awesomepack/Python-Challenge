@@ -13,33 +13,29 @@ with open(file , 'r') as f:
 
     f_reader = csv.reader(f , delimiter = ',');
 
-    header = next(f_reader); #skipping the header
+    header = next(f_reader); #storing the header
 
     Candidates = {}; #stores candidates
-    Total_Votes = 0; #Counts rows
+    Total_Votes = 0; #Counts rows/votes
 
 
     for vote in f_reader:
 
-        Candidates.setdefault(vote[2] , [0,0]); 
+        Candidates.setdefault(vote[2] , [0,0]); # create a key for candidates as they are encountered
 
-        Candidates[vote[2]][0] += 1;
+        Candidates[vote[2]][0] += 1; # Populate a candidates first list item with their vote_count
         
-        Total_Votes += 1;
-
-
+        Total_Votes += 1; #Keep track of the total rows/votes 
 
 
 # Determining percent vote for each candidate
 
 for candidate in Candidates:
 
-    Candidate_Votes = Candidates[candidate][0];
+    Candidate_Votes = Candidates[candidate][0]; # references the value where candidate specific vote count exists
 
     Candidates[candidate][1] = (Candidate_Votes / Total_Votes) * 100;
 
-
-pp.pprint(Candidates);
 
 # Finding the value in the dictionary that is the largest
 
@@ -52,12 +48,13 @@ for key , value in Candidates.items():
     if value == Max_Vote:
         Winner = key;
 
-#Storing my Analysis strings as variables
+#Storing my Analysis strings as variables for easier printing
+
+candidates_list = list(Candidates.items());
 
 H = 'PyPoll Results';
-
 L1 = f'The total number of votes is: {Total_Votes}';
-L2 = f'The candidates are:{Candidates.items()}';
+L2 = f'The candidates are: (Candidate / Vote_Count / Vote_Percent) {candidates_list}';
 L3 = f'The Winner is.....: {Winner}'
 new_line = '\n';
 
